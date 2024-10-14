@@ -14,6 +14,8 @@ def all(input: list[int], check: int) -> bool:
         idx += 1
     if correct_times == len(input):  # change the bool if all elem are matching
         default_bool = True
+    if len(input) == 0:
+        default_bool = False  # return False if empty list [edge case]
     return default_bool
 
 
@@ -40,6 +42,13 @@ def is_equal(a: list[int], b: list[int]) -> bool:
             match_times += 1
         idx += 1
     if match_times == len(a) or match_times == len(b):
+        true_false = True
+    # I wonder if there's a more succint way to write edge cases
+    if len(a) != len(b):  # if lists have diff length [edge case]
+        true_false = False
+    if len(a) == 0 or len(b) == 0:  # if either is empty list [edge case]
+        true_false = False
+    if len(a) == 0 and len(b) == 0:  # if both are empty list [edge case]
         true_false = True
     return true_false
 
